@@ -1,0 +1,78 @@
+# safemind-blocker
+Website to help teenagers block adult content
+<!DOCTYPE html>
+<html>
+<head>
+<title>SafeMind Block</title>
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:#f5f5f5;
+padding:40px;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+button{
+padding:12px 20px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.red{background:#e74c3c;color:white;}
+.gray{background:#95a5a6;color:white;}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="content">
+<h1>SafeMind Protection</h1>
+<p>This tool helps teenagers block porn and adult content.</p>
+<button class="red" onclick="firstWarning()">Start Protection</button>
+</div>
+
+<script>
+
+function firstWarning(){
+let confirm1 = confirm(
+"⚠️ WARNING 1:\n\nActivating this blocker means you want to stop watching porn.\n\nThis decision may block adult content permanently.\n\nDo you want to continue?"
+);
+
+if(confirm1){
+secondWarning();
+}
+}
+
+function secondWarning(){
+let confirm2 = confirm(
+"⚠️ FINAL WARNING:\n\nAfter activating, the blocker will stay active and is difficult to remove.\n\nMake sure you truly want to block porn for your mental health.\n\nActivate blocker?"
+);
+
+if(confirm2){
+localStorage.setItem("block","true");
+document.body.innerHTML =
+"<h1>🔒 Protection Activated</h1><p>You chose a healthier path. Stay strong.</p>";
+}
+}
+
+if(localStorage.getItem("block")==="true"){
+document.body.innerHTML =
+"<h1>🔒 Adult content is blocked.</h1><p>Stay focused and keep improving yourself.</p>";
+}
+
+</script>
+
+</body>
+</html>
