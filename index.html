@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>SafeMind Protection</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.box{
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+max-width:400px;
+margin:auto;
+}
+
+button{
+padding:12px 20px;
+margin-top:15px;
+font-size:16px;
+border:none;
+background:#22c55e;
+color:white;
+border-radius:5px;
+}
+
+select{
+padding:10px;
+margin-top:10px;
+}
+
+.warning{
+color:#f87171;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>SafeMind</h1>
+
+<p>Block adult websites to protect your mind.</p>
+
+<p class="warning">⚠ Warning 1: This system will block adult content.</p>
+
+<p class="warning">⚠ Warning 2: Once enabled, you cannot disable until the timer ends.</p>
+
+<p>Select blocking duration:</p>
+
+<select id="days">
+
+<option value="1">1 Day</option>
+<option value="7">7 Days</option>
+<option value="30">30 Days</option>
+
+</select>
+
+<br>
+
+<button onclick="activate()">Enable Protection</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+function activate(){
+
+let days = document.getElementById("days").value;
+
+let time = Date.now() + (days*24*60*60*1000);
+
+localStorage.setItem("blockUntil", time);
+
+document.getElementById("status").innerHTML =
+"Protection enabled for "+days+" days.";
+
+}
+
+</script>
+
+</body>
+
+</html>
